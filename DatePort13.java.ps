@@ -1,0 +1,153 @@
+%!PS-Adobe-1.0
+%%Title: DatePort13.java
+%%Creator: nenscript v1.13++ (US version) 24-November-1992
+%%For: chris
+%%CreationDate: Wed May 28 09:58:35 1997
+%%DocumentFonts: Courier Courier-Bold 
+%%Pages: (atend)
+%%EndComments
+/newcodes	% foreign character encodings
+[
+160/space 161/exclamdown 162/cent 163/sterling 164/currency
+165/yen 166/brokenbar 167/section  168/dieresis 169/copyright
+170/ordfeminine 171/guillemotleft 172/logicalnot 173/hyphen 174/registered
+175/macron 176/degree 177/plusminus 178/twosuperior 179/threesuperior
+180/acute 181/mu 182/paragraph  183/periodcentered 184/cedilla
+185/onesuperior 186/ordmasculine 187/guillemotright 188/onequarter
+189/onehalf 190/threequarters 191/questiondown 192/Agrave 193/Aacute
+194/Acircumflex 195/Atilde 196/Adieresis 197/Aring 198/AE 199/Ccedilla
+200/Egrave 201/Eacute 202/Ecircumflex 203/Edieresis 204/Igrave  205/Iacute
+206/Icircumflex 207/Idieresis 208/Eth 209/Ntilde 210/Ograve 211/Oacute
+212/Ocircumflex 213/Otilde  214/Odieresis 215/multiply 216/Oslash
+217/Ugrave 218/Uacute 219/Ucircumflex 220/Udieresis 221/Yacute 222/Thorn
+223/germandbls 224/agrave 225/aacute 226/acircumflex 227/atilde
+228/adieresis 229/aring 230/ae 231/ccedilla  232/egrave 233/eacute
+234/ecircumflex 235/edieresis 236/igrave 237/iacute 238/icircumflex
+239/idieresis 240/eth 241/ntilde 242/ograve 243/oacute 244/ocircumflex
+245/otilde 246/odieresis 247/divide 248/oslash 249/ugrave  250/uacute
+251/ucircumflex 252/udieresis 253/yacute 254/thorn 255/ydieresis
+] def
+
+/reencdict 12 dict def
+
+
+
+    % change fonts using ISO Latin1 characters
+/ChgFnt		% size psname natname  =>  font
+{
+    dup FontDirectory exch known	% is re-encoded name known?
+    { exch pop }			% yes, get rid of long name
+    { dup 3 1 roll ReEncode } ifelse	% no, re-encode it
+    findfont exch scalefont setfont
+} def
+
+/ReEncode	%
+{
+    reencdict begin
+	/newname exch def
+	/basename exch def
+	/basedict basename findfont def
+	/newfont basedict maxlength dict def
+	basedict
+	{ exch dup /FID ne
+	    { dup /Encoding eq
+		{ exch dup length array copy newfont 3 1 roll put }
+		{ exch newfont 3 1 roll put } ifelse
+	    }
+	    { pop pop } ifelse
+	} forall
+	newfont /FontName newname put
+	newcodes aload pop newcodes length 2 idiv
+	{ newfont /Encoding get 3 1 roll put } repeat
+	newname newfont definefont pop
+    end
+} def
+
+1 100 div dup scale
+/#copies 1 def
+/BodyF { 1000 /Courier /Courier-Latin1 ChgFnt } def
+/CW BodyF ( ) stringwidth pop def
+/Titlef {  1000 /Courier-Bold /Courier-Bold-Latin1 ChgFnt } def
+/K         { -2 CW mul add exch moveto (+) show } def
+/L         { CW mul add exch moveto show } def
+/T         { exch moveto show } def
+/M         { CW mul 0 rmoveto } def
+/Centre    { dup stringwidth pop 2 div neg 0 rmoveto } def
+/StartPage { /SavedPage save def
+  0 setgray Titlef 2500 75700 moveto show 8 M (Wed May 28 09:58:35 1997) show 8 M show
+  BodyF 0 setgray } def
+/EndPage   {showpage SavedPage restore } def
+%%EndProlog
+%%Page: 1 1
+(1) (DatePort13.java) StartPage
+(1:/******************************************************************) 73700 2500 6 L
+(2:                Christopher D. Cavello) 72600 2500 6 L
+(3:                May 21, 1997) 71500 2500 6 L
+(4:                ee 701) 70400 2500 6 L
+(5:                project 2) 69300 2500 6 L
+(6:) 68200 2500 6 L
+(7: DatePort13.java ) 67100 2500 6 L
+(8: javasoft /nav/read/Tutorial/networking/sockets/readingWriting.html) 66000 2500 6 L
+(9:*******************************************************************/) 64900 2500 6 L
+(10:) 63800 2500 5 L
+(11:) 62700 2500 5 L
+(12:/******************************************************************) 61600 2500 5 L
+(13:        This connects to port 13 of those UNIX machines which allow) 60500 2500 5 L
+(14:        the date/time service) 59400 2500 5 L
+(15:*******************************************************************/) 58300 2500 5 L
+(16:) 57200 2500 5 L
+(17:import java.io.*;) 56100 2500 5 L
+(18:import java.net.*;) 55000 2500 5 L
+(19:) 53900 2500 5 L
+(20:public class DatePort13 {) 52800 2500 5 L
+(21:public static void main\(String[] args\) {) 51700 2500 5 L
+(22:Socket echoSocket = null;) 50600 2500 5 L
+(23:DataOutputStream os = null;) 49500 2500 5 L
+(24:DataInputStream is = null;) 48400 2500 5 L
+(25:DataInputStream stdIn = new DataInputStream\(System.in\);) 47300 2500 5 L
+(26:) 46200 2500 5 L
+(27:try ) 45100 2500 5 L
+(28:{) 44000 2500 5 L
+(29:        echoSocket = new Socket\("er4hp62", 13\);) 42900 2500 5 L
+(30:        os = new DataOutputStream\(echoSocket.getOutputStream\(\)\);) 41800 2500 5 L
+(31:        is = new DataInputStream\(echoSocket.getInputStream\(\)\);) 40700 2500 5 L
+(32:} ) 39600 2500 5 L
+(33:catch \(UnknownHostException e\) ) 38500 2500 5 L
+(34:{) 37400 2500 5 L
+(35:        System.err.println\("Don't know about host: er4hp62"\);) 36300 2500 5 L
+(36:} ) 35200 2500 5 L
+(37:catch \(IOException e\) ) 34100 2500 5 L
+(38:{) 33000 2500 5 L
+(39:        System.err.println\("Couldn't get I/O for the connection to: er4hp62"\);) 31900 2500 5 L
+(40:}) 30800 2500 5 L
+(41:) 29700 2500 5 L
+(42:if \(echoSocket != null && os != null && is != null\) ) 28600 2500 5 L
+(43:{) 27500 2500 5 L
+(44:        try ) 26400 2500 5 L
+(45:        {) 25300 2500 5 L
+(46:        String userInput;) 24200 2500 5 L
+(47:        while \(\(userInput = stdIn.readLine\(\)\) != null\) ) 23100 2500 5 L
+(48:        {) 22000 2500 5 L
+(49:    os.writeBytes\(userInput\);) 20900 2500 5 L
+(50:    os.writeByte\('\\n'\);) 19800 2500 5 L
+(51:    System.out.println\(" Christopher D. Cavello \\n EE701 Java Project \\n Time is " + ) 18700 2500 5 L
+17600 2500 K (is.readLine\(\)\);) 17600 2500 T
+(52:        }) 16500 2500 5 L
+(53:        os.close\(\);) 15400 2500 5 L
+(54:        is.close\(\);) 14300 2500 5 L
+(55:        echoSocket.close\(\);) 13200 2500 5 L
+(56:} ) 12100 2500 5 L
+(57:catch \(IOException e\) ) 11000 2500 5 L
+(58:{) 9900 2500 5 L
+(59:        System.err.println\("I/O failed on the connection to: er4hp62"\);) 8800 2500 5 L
+(60:}) 7700 2500 5 L
+(61:) 6600 2500 5 L
+(62:} /* end of IF */) 5500 2500 5 L
+(63:} /* end of "public static void main\(String[] args\) "  */) 4400 2500 5 L
+EndPage
+%%Page: 2 2
+(2) (DatePort13.java) StartPage
+(64:} /* end of  "public class DatePort13"      */) 73700 2500 5 L
+EndPage
+%%Trailer
+%%Pages: 2

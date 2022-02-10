@@ -1,0 +1,9 @@
+cdcpc 251% javac DatePort13.java
+cdcpc 252% java DatePort13
+
+ Christopher D. Cavello 
+ EE701 Java Project 
+ Time is Wed May 28 09:56:47 1997
+
+I/O failed on the connection to: er4hp62
+cdcpc 253% 

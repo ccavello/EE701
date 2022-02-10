@@ -1,0 +1,138 @@
+%!PS-Adobe-1.0
+%%Creator: HP-UX:cavelloc (Christopher D Cavello,M,P,ELECENG,GRD,Unknown,Enrolled)
+%%Title: Client.java
+%%CreationDate: Thu May 29 00:39:06 1997
+%%DocumentFonts: Courier-Bold Courier
+% Start of enscript.pro -- prolog for text file translator
+% Copyright (c) 1984,1985,1987 Adobe Systems Incorporated. All Rights Reserved. 
+% GOVERNMENT END USERS: See Notice file in TranScript library directory
+% -- probably /usr/lib/ps/Notice
+% RCSID: $Header: enscript.pro,v 2.2 87/11/17 16:39:56 byron Rel $
+save/EnscriptJob exch def
+/StartEnscriptDoc{$enscript begin}def
+/$enscript 50 dict def $enscript begin
+/EndEnscriptDoc{end}def
+/S/show load def
+/X{exch 0 rmoveto S}def
+/Y{exch 0 exch rmoveto S}def
+/B{3 1 roll moveto S}def
+/F{$fd exch get setfont}def
+/StartPage{/svpg save def .05 dup scale}def
+/EndPage{svpg restore showpage}def
+/DoPreFeed{/statusdict where{pop
+ statusdict/prefeed known{statusdict exch/prefeed exch put 0}if}if pop}def
+/Landscape{90 rotate 0 -15840 translate}def
+/SetUpFonts
+ {dup/$fd exch array def{findfont exch scalefont $fd 3 1 roll put}repeat}def
+/InitGaudy{/TwoColumn exch def /BarLength exch def
+ /ftD /Times-Bold findfont 12 UP scalefont def
+ /ftF /Times-Roman findfont 14 UP scalefont def
+ /ftP /Helvetica-Bold findfont 30 UP scalefont def}def
+/U{1440 mul}def
+/UP{U 72 div}def
+/LB{/pts exch UP def /charcolor exch def /boxcolor exch def /font exch def
+ /label exch def /dy exch def /dx exch def /lly exch def /llx exch def
+ gsave boxcolor setgray
+ llx lly moveto dx 0 rlineto 0 dy rlineto dx neg 0 rlineto closepath fill
+ /lines label length def
+ /yp lly dy add dy lines pts mul sub 2 div sub pts .85 mul sub def
+ font setfont charcolor setgray
+ label {dup stringwidth pop 2 div llx dx 2 div add exch sub yp moveto show
+   /yp yp pts sub def}forall grestore}def
+/Gaudy{/Page exch def /Date exch def /File exch def /Comment exch def
+ .25 U 10.2 U BarLength .1 sub U .25 U [File] ftF .97 0 14 LB
+ .25 U 10.45 U BarLength .1 sub U .25 U [Comment] ftF 1 0 14 LB
+ .25 U 10.2 U 1 U .5 U Date ftD .7 0 12 LB
+ BarLength .75 sub U 10.2 U 1 U .5 U [Page] ftP .7 1 30 LB
+ TwoColumn{BarLength 2 div .19 add U 10.2 U moveto 0 -10 U rlineto stroke}if
+}def
+end
+StartEnscriptDoc % end fixed prolog
+1 200 /Courier-Bold
+0 140 /Courier
+2 SetUpFonts
+%%EndProlog
+%%Page: ? 1
+StartPage
+1 F
+900 14900 (Client.java        Thu May 29 00:39:02 1997        1)B
+0 F
+900 14580(/******************************************************************)B
+2244 14420(Christopher D. Cavello)B
+2244 14260(May 21, 1997)B
+2244 14100(ee 701)B
+2244 13940(project 2)B
+900 13780(*******************************************************************/)B
+900 13460(/*)B
+984 13300(* Client )B
+984 13140(*/)B
+900 12820(import java.util.*;)B
+900 12660(import java.net.*;)B
+900 12500(import java.io.*;)B
+900 12180(public class Client extends Thread )B
+900 12020({)B
+1068 11860(public void run\(\) )B
+1068 11700({)B
+1236 11540(Socket clientSocket = null; )B
+1236 11380(PrintStream os = null;     )B
+1236 11220(DataInputStream is = null;)B
+1236 11060(/* make new socket below    */)B
+1236 10900(try)B
+1236 10740({)B
+1404 10580(clientSocket = new Socket\("kay", 4567\);)B
+1404 10420(/*  "kay" is an er4 machine \(HP-UX 10.10\)  */)B
+1404 10260(os = new PrintStream\(clientSocket.getOutputStream\(\)\);)B
+1404 10100(is = new DataInputStream\(clientSocket.getInputStream\(\)\);)B
+1236 9940(})B
+1236 9780(catch \(UnknownHostException e\))B
+1236 9620({)B
+1404 9460(System.err.println\("Don't know about host: kay"\);)B
+1236 9300(})B
+1236 9140(catch \(IOException e\))B
+1236 8980({)B
+1404 8820(System.err.println\("Couldn't get I/O for the connection to: kay"\);)B
+1236 8660(})B
+1236 8500(if \(clientSocket != null && os != null && is != null\))B
+1236 8340({)B
+1404 8180(try)B
+1404 8020({)B
+1572 7860(String fromServer,toServer;)B
+1572 7700(/* http://www.javasoft.com:80/nav/read/Tutorial/java/threads/synchronization.html */)B
+1572 7540(/* The above web page has code for the random numbers in the "Cubbyhole" program  */)B
+1572 7380(int T=\(int\)\(Math.random\(\)*2000\)+1000;     /*  T=1000 to 3000 milliseconds  */)B
+1572 7220(sleep\(T\);)B
+1260(/* "sleep" is in the Cubbyhole program too */)X
+1572 7060(toServer="Time?";)B
+1572 6900(os.println\(toServer\);)B
+1572 6740(os.flush\(\);)B
+1572 6580(while \(\(fromServer = is.readLine\(\)\) != null\))B
+1572 6420({)B
+1740 6260(toServer="Time?";)B
+1740 6100(os.println\(toServer\);)B
+1740 5940(os.flush\(\);)B
+1740 5780(fromServer=is.readLine\(\);)B
+1740 5620(System.out.println\("current time: " + fromServer\);)B
+1740 5460(sleep\(T\);)B
+1572 5300(}  /* end while */)B
+1572 5140(os.close\(\);)B
+1572 4980(is.close\(\);)B
+1572 4820(clientSocket.close\(\);)B
+1404 4660(}   /* end TRY   */)B
+1404 4500(catch \(InterruptedException e\) )B
+1404 4340({   /* do nothing  */)B
+1404 4180(})B
+1404 4020(catch \(UnknownHostException e\))B
+1404 3860({)B
+1572 3700(System.err.println\("Trying to connect to unknown host: " + e\);)B
+1404 3540(})B
+1404 3380(catch \(IOException e\))B
+1404 3220({)B
+1572 3060(System.err.println\("IOException:  " + e\);)B
+1404 2900(})B
+1236 2740(} /* end IF  */)B
+1068 2580(})B
+900 2420(})B
+EndPage
+%%Trailer
+EndEnscriptDoc
+EnscriptJob restore

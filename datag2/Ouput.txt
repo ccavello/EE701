@@ -1,0 +1,35 @@
+cdcpc 1% pwd
+/home/chris/EE701/datag2
+cdcpc 2% ls
+JavaRun.sh*              cdcServer.class          cdcServerThread.java
+cdcClient.class          cdcServer.java           cdcServerThread.javaOLD
+cdcClient.java           cdcServerThread.class
+
+cdcpc 4% javac cdcClient.java
+cdcpc 5% javac cdcServer.java 
+cdcpc 6% javac cdcServerThread.java
+cdcpc 7% java cdcServer &
+[1] 8971
+cdcpc 8% cdcServer listening on port: 1169
+
+cdcpc 8% java cdcClient
+Usage: java cdcClient <hostname> <port#>
+cdcpc 9% java cdcClient cdcpc 1169
+current time: Thu Jun 12 20:57:05 EDT 1997
+current time: Thu Jun 12 20:57:07 EDT 1997
+current time: Thu Jun 12 20:57:10 EDT 1997
+current time: Thu Jun 12 20:57:12 EDT 1997
+current time: Thu Jun 12 20:57:13 EDT 1997
+current time: Thu Jun 12 20:57:15 EDT 1997
+current time: Thu Jun 12 20:57:17 EDT 1997
+current time: Thu Jun 12 20:57:19 EDT 1997
+current time: Thu Jun 12 20:57:21 EDT 1997
+current time: Thu Jun 12 20:57:22 EDT 1997
+current time: Thu Jun 12 20:57:25 EDT 1997
+current time: Thu Jun 12 20:57:27 EDT 1997
+current time: Thu Jun 12 20:57:29 EDT 1997
+current time: Thu Jun 12 20:57:31 EDT 1997
+current time: Thu Jun 12 20:57:33 EDT 1997
+current time: Thu Jun 12 20:57:36 EDT 1997
+current time: Thu Jun 12 20:57:38 EDT 1997
+

@@ -1,0 +1,169 @@
+%!PS-Adobe-1.0
+%%Title: Client.java
+%%Creator: nenscript v1.13++ (US version) 24-November-1992
+%%For: chris
+%%CreationDate: Mon Jun  2 22:03:07 1997
+%%DocumentFonts: Courier Courier-Bold 
+%%Pages: (atend)
+%%EndComments
+/newcodes	% foreign character encodings
+[
+160/space 161/exclamdown 162/cent 163/sterling 164/currency
+165/yen 166/brokenbar 167/section  168/dieresis 169/copyright
+170/ordfeminine 171/guillemotleft 172/logicalnot 173/hyphen 174/registered
+175/macron 176/degree 177/plusminus 178/twosuperior 179/threesuperior
+180/acute 181/mu 182/paragraph  183/periodcentered 184/cedilla
+185/onesuperior 186/ordmasculine 187/guillemotright 188/onequarter
+189/onehalf 190/threequarters 191/questiondown 192/Agrave 193/Aacute
+194/Acircumflex 195/Atilde 196/Adieresis 197/Aring 198/AE 199/Ccedilla
+200/Egrave 201/Eacute 202/Ecircumflex 203/Edieresis 204/Igrave  205/Iacute
+206/Icircumflex 207/Idieresis 208/Eth 209/Ntilde 210/Ograve 211/Oacute
+212/Ocircumflex 213/Otilde  214/Odieresis 215/multiply 216/Oslash
+217/Ugrave 218/Uacute 219/Ucircumflex 220/Udieresis 221/Yacute 222/Thorn
+223/germandbls 224/agrave 225/aacute 226/acircumflex 227/atilde
+228/adieresis 229/aring 230/ae 231/ccedilla  232/egrave 233/eacute
+234/ecircumflex 235/edieresis 236/igrave 237/iacute 238/icircumflex
+239/idieresis 240/eth 241/ntilde 242/ograve 243/oacute 244/ocircumflex
+245/otilde 246/odieresis 247/divide 248/oslash 249/ugrave  250/uacute
+251/ucircumflex 252/udieresis 253/yacute 254/thorn 255/ydieresis
+] def
+
+/reencdict 12 dict def
+
+
+
+    % change fonts using ISO Latin1 characters
+/ChgFnt		% size psname natname  =>  font
+{
+    dup FontDirectory exch known	% is re-encoded name known?
+    { exch pop }			% yes, get rid of long name
+    { dup 3 1 roll ReEncode } ifelse	% no, re-encode it
+    findfont exch scalefont setfont
+} def
+
+/ReEncode	%
+{
+    reencdict begin
+	/newname exch def
+	/basename exch def
+	/basedict basename findfont def
+	/newfont basedict maxlength dict def
+	basedict
+	{ exch dup /FID ne
+	    { dup /Encoding eq
+		{ exch dup length array copy newfont 3 1 roll put }
+		{ exch newfont 3 1 roll put } ifelse
+	    }
+	    { pop pop } ifelse
+	} forall
+	newfont /FontName newname put
+	newcodes aload pop newcodes length 2 idiv
+	{ newfont /Encoding get 3 1 roll put } repeat
+	newname newfont definefont pop
+    end
+} def
+
+1 100 div dup scale
+/#copies 1 def
+/BodyF { 1000 /Courier /Courier-Latin1 ChgFnt } def
+/CW BodyF ( ) stringwidth pop def
+/Titlef {  1000 /Courier-Bold /Courier-Bold-Latin1 ChgFnt } def
+/K         { -2 CW mul add exch moveto (+) show } def
+/L         { CW mul add exch moveto show } def
+/T         { exch moveto show } def
+/M         { CW mul 0 rmoveto } def
+/Centre    { dup stringwidth pop 2 div neg 0 rmoveto } def
+/StartPage { /SavedPage save def
+  0 setgray Titlef 2500 75700 moveto show 8 M (Mon Jun  2 22:03:07 1997) show 8 M show
+  BodyF 0 setgray } def
+/EndPage   {showpage SavedPage restore } def
+%%EndProlog
+%%Page: 1 1
+(1) (Client.java) StartPage
+(1:/******************************************************************) 73700 2500 6 L
+(2:                Christopher D. Cavello) 72600 2500 6 L
+(3:                May 21, 1997) 71500 2500 6 L
+(4:                ee 701) 70400 2500 6 L
+(5:                project 2) 69300 2500 6 L
+(6:*******************************************************************/) 68200 2500 6 L
+(7:/******************************************************************) 67100 2500 6 L
+(8: This program borrows a lot from the KnockKnockClient and) 66000 2500 6 L
+(9:    the Cubbyhole programs on Javasoft's web page.) 64900 2500 6 L
+(10:  The skeleton is from Prof. Hou's EE701 class.) 63800 2500 5 L
+(11:*******************************************************************/) 62700 2500 5 L
+(12:) 61600 2500 5 L
+(13:/*) 60500 2500 5 L
+(14: * Client ) 59400 2500 5 L
+(15: */) 58300 2500 5 L
+(16:) 57200 2500 5 L
+(17:import java.util.*;) 56100 2500 5 L
+(18:import java.net.*;) 55000 2500 5 L
+(19:import java.io.*;) 53900 2500 5 L
+(20:) 52800 2500 5 L
+(21:public class Client extends Thread ) 51700 2500 5 L
+(22:{) 50600 2500 5 L
+(23:  public static void main\(String[] args\)) 49500 2500 5 L
+(24:  {) 48400 2500 5 L
+(25:    /* make new socket below    */) 47300 2500 5 L
+(26:    Socket clientSocket = null;) 46200 2500 5 L
+(27:    PrintStream os = null;) 45100 2500 5 L
+(28:    DataInputStream is = null;) 44000 2500 5 L
+(29:) 42900 2500 5 L
+(30:    try) 41800 2500 5 L
+(31:    {) 40700 2500 5 L
+(32:      clientSocket = new Socket\("cdcpc", 4567\);) 39600 2500 5 L
+(33:      /*  "cdcpc" is a machine in ".eng.ohio-state.edu"  */) 38500 2500 5 L
+(34:      os = new PrintStream\(clientSocket.getOutputStream\(\)\);) 37400 2500 5 L
+(35:      is = new DataInputStream\(clientSocket.getInputStream\(\)\);) 36300 2500 5 L
+(36:    }) 35200 2500 5 L
+(37:    catch \(UnknownHostException e\)) 34100 2500 5 L
+(38:    { System.err.println\("Don't know about host: cdcpc"\);}) 33000 2500 5 L
+(39:    catch \(IOException e\)) 31900 2500 5 L
+(40:    {System.err.println\("Couldn't get I/O for the connection to: cdcpc"\);}) 30800 2500 5 L
+(41:    if \(clientSocket != null && os != null && is != null\)) 29700 2500 5 L
+(42:    {) 28600 2500 5 L
+(43:      try) 27500 2500 5 L
+(44:      {) 26400 2500 5 L
+(45:        String fromServer,toServer;) 25300 2500 5 L
+(46:        toServer="Time?";  // inquiry to send to Server) 24200 2500 5 L
+(47:        os.println\(toServer\);//send inquiry to Server) 23100 2500 5 L
+(48:        System.out.println\(" Christopher D. Cavello \\n EE701 Java Project \\n "\);) 22000 2500 5 L
+(49:) 20900 2500 5 L
+(50:        while \(\(fromServer = is.readLine\(\)\) != null\)) 19800 2500 5 L
+(51:        {) 18700 2500 5 L
+(52:          while\( 1 !=  0\)  //  1 is never equal to 0) 17600 2500 5 L
+(53:          {) 16500 2500 5 L
+(54:            int T=\(int\)\(Math.random\(\)*2000\)+1000;     ) 15400 2500 5 L
+(55:        //                 T=1000 to 3000 milliseconds  ) 14300 2500 5 L
+(56:        // http://www.javasoft.com:80/nav/read/) 13200 2500 5 L
+(57:        //    Tutorial/java/threads/synchronization.html  ) 12100 2500 5 L
+(58:        // The above web page has code for the ) 11000 2500 5 L
+(59:        //    random numbers in the "Cubbyhole" program  ) 9900 2500 5 L
+(60:            sleep\(T\);   // "sleep" is in the Cubbyhole program too  ) 8800 2500 5 L
+(61:            toServer="Time?";) 7700 2500 5 L
+(62:            os.println\(toServer\);) 6600 2500 5 L
+(63:            os.flush\(\);) 5500 2500 5 L
+(64:            fromServer=is.readLine\(\);) 4400 2500 5 L
+EndPage
+%%Page: 2 2
+(2) (Client.java) StartPage
+(65:            System.out.println\(" \\n current time: " + fromServer\);) 73700 2500 5 L
+(66:          } // end while 1!=0) 72600 2500 5 L
+(67:        }  /* end while */) 71500 2500 5 L
+(68:        os.close\(\);) 70400 2500 5 L
+(69:        is.close\(\);) 69300 2500 5 L
+(70:        clientSocket.close\(\);) 68200 2500 5 L
+(71:      }/* end TRY   */) 67100 2500 5 L
+(72:      /* ERROR TRAPS BELOW HERE   */) 66000 2500 5 L
+(73:      catch \(InterruptedException e\) ) 64900 2500 5 L
+(74:      {   /* do nothing  */}) 63800 2500 5 L
+(75:      catch \(UnknownHostException e\)) 62700 2500 5 L
+(76:      {System.err.println\("Trying to connect to unknown host: " + e\); }) 61600 2500 5 L
+(77:      catch \(IOException e\)) 60500 2500 5 L
+(78:      { System.err.println\("IOException:  " + e\); }) 59400 2500 5 L
+(79:    } /* end IF  */) 58300 2500 5 L
+(80:  }/* end of public static void main\(String[] args\) */) 57200 2500 5 L
+(81:}/* end of public class Client  */) 56100 2500 5 L
+EndPage
+%%Trailer
+%%Pages: 2

@@ -1,0 +1,112 @@
+%!PS-Adobe-1.0
+%%Creator: HP-UX:cavelloc (Christopher D Cavello,M,P,ELECENG,GRD,Unknown,Enrolled)
+%%Title: Server.java
+%%CreationDate: Thu May 29 00:39:13 1997
+%%DocumentFonts: Courier-Bold Courier
+% Start of enscript.pro -- prolog for text file translator
+% Copyright (c) 1984,1985,1987 Adobe Systems Incorporated. All Rights Reserved. 
+% GOVERNMENT END USERS: See Notice file in TranScript library directory
+% -- probably /usr/lib/ps/Notice
+% RCSID: $Header: enscript.pro,v 2.2 87/11/17 16:39:56 byron Rel $
+save/EnscriptJob exch def
+/StartEnscriptDoc{$enscript begin}def
+/$enscript 50 dict def $enscript begin
+/EndEnscriptDoc{end}def
+/S/show load def
+/X{exch 0 rmoveto S}def
+/Y{exch 0 exch rmoveto S}def
+/B{3 1 roll moveto S}def
+/F{$fd exch get setfont}def
+/StartPage{/svpg save def .05 dup scale}def
+/EndPage{svpg restore showpage}def
+/DoPreFeed{/statusdict where{pop
+ statusdict/prefeed known{statusdict exch/prefeed exch put 0}if}if pop}def
+/Landscape{90 rotate 0 -15840 translate}def
+/SetUpFonts
+ {dup/$fd exch array def{findfont exch scalefont $fd 3 1 roll put}repeat}def
+/InitGaudy{/TwoColumn exch def /BarLength exch def
+ /ftD /Times-Bold findfont 12 UP scalefont def
+ /ftF /Times-Roman findfont 14 UP scalefont def
+ /ftP /Helvetica-Bold findfont 30 UP scalefont def}def
+/U{1440 mul}def
+/UP{U 72 div}def
+/LB{/pts exch UP def /charcolor exch def /boxcolor exch def /font exch def
+ /label exch def /dy exch def /dx exch def /lly exch def /llx exch def
+ gsave boxcolor setgray
+ llx lly moveto dx 0 rlineto 0 dy rlineto dx neg 0 rlineto closepath fill
+ /lines label length def
+ /yp lly dy add dy lines pts mul sub 2 div sub pts .85 mul sub def
+ font setfont charcolor setgray
+ label {dup stringwidth pop 2 div llx dx 2 div add exch sub yp moveto show
+   /yp yp pts sub def}forall grestore}def
+/Gaudy{/Page exch def /Date exch def /File exch def /Comment exch def
+ .25 U 10.2 U BarLength .1 sub U .25 U [File] ftF .97 0 14 LB
+ .25 U 10.45 U BarLength .1 sub U .25 U [Comment] ftF 1 0 14 LB
+ .25 U 10.2 U 1 U .5 U Date ftD .7 0 12 LB
+ BarLength .75 sub U 10.2 U 1 U .5 U [Page] ftP .7 1 30 LB
+ TwoColumn{BarLength 2 div .19 add U 10.2 U moveto 0 -10 U rlineto stroke}if
+}def
+end
+StartEnscriptDoc % end fixed prolog
+1 200 /Courier-Bold
+0 140 /Courier
+2 SetUpFonts
+%%EndProlog
+%%Page: ? 1
+StartPage
+1 F
+900 14900 (Server.java        Thu May 29 00:37:53 1997        1)B
+0 F
+900 14580(/******************************************************************)B
+2244 14420(Christopher D. Cavello)B
+2244 14260(May 21, 1997)B
+2244 14100(ee 701)B
+2244 13940(project 2)B
+900 13780(*******************************************************************/)B
+900 13460(/*)B
+984 13300(*  server: add your code serverthread)B
+984 13140(*/)B
+900 12820(import java.util.*;)B
+900 12660(import java.net.*;)B
+900 12500(import java.io.*;)B
+900 12020(class Server {)B
+1068 11860(public static void main\(String[] args\) {)B
+1236 11700(ServerSocket serverSocket = null;)B
+1236 11540(boolean listening = true;)B
+1236 11220(try)B
+1236 11060({)B
+1404 10900(serverSocket = new ServerSocket\(4567\);)B
+1236 10740(})B
+1236 10580(catch \(IOException e\))B
+1236 10420({)B
+1404 10260(System.err.println\("Could not listen on port: " + 4567 + ", " + e.getMessage\(\)\);)B
+1404 10100(System.exit\(1\);)B
+1236 9940(})B
+1236 9620(while \(listening\))B
+1236 9460({)B
+1404 9300(Socket clientSocket = null;)B
+1404 9140(try)B
+1404 8980({)B
+1572 8820(clientSocket = serverSocket.accept\(\);)B
+1404 8660(})B
+1404 8500(catch \(IOException e\))B
+1404 8340({)B
+1572 8180(System.err.println\("Accept failed: " + 4567 + ", " + e.getMessage\(\)\);)B
+1572 8020(continue;)B
+1404 7860(})B
+1404 7700(new ServerThread\(clientSocket\).start\(\);)B
+1236 7540(})B
+1236 7220(try)B
+1236 7060({)B
+1404 6900(serverSocket.close\(\);)B
+1236 6740(})B
+1236 6580(catch \(IOException e\))B
+1236 6420({)B
+1404 6260(System.err.println\("Could not close server socket." + e.getMessage\(\)\);)B
+1236 6100(})B
+1068 5940(})B
+900 5780(})B
+EndPage
+%%Trailer
+EndEnscriptDoc
+EnscriptJob restore
